@@ -5,14 +5,19 @@ var output = document.getElementById("output");
 var result = document.getElementById("result");
 var playerPoints = document.getElementById("playerPoints");
 var computerPoints = document.getElementById("computerPoints");
-var wins = 0;
-var lost = 0;
 var newGameBtn = document.getElementById("newGameBtn");
-var rounds;
 var roundsSpace = document.getElementById("roundsSpace");
 var errorRound = document.getElementById("errorRound");
 
 var playerMoveBtn = document.querySelectorAll('.player-move');
+
+var params = {
+  rounds: 0,
+  wins: 0,
+  lost: 0,
+  roundsPlayed: 0
+}
+
 
 for (var i = 0; i < playerMoveBtn.length; i++){
   playerMoveBtn[i].addEventListener('click', function(){
@@ -28,13 +33,13 @@ function playerMove(playerMove) {
 
 function compMove() {
   var compChoice = Math.floor(Math.random() * 3 + 1);
-  var comp;
+  
   if (compChoice == 1) {
-    return (comp = "PAPER");
+     return "PAPER"
   } else if (compChoice == 2) {
-    return (comp = "ROCK");
+    return "ROCK"
   } else if (compChoice == 3) {
-    return (comp = "SCISSORS");
+     return "SCISSORS"
   }
 }
 
@@ -47,28 +52,28 @@ function whoWin(playerMove, computerMove) {
     (playerMove === "PAPER" && computerMove === "SCISSORS")
   ) {
     output.innerHTML = "Computer WON " + "You pick " + playerMove + " Computer pick " + computerMove;
-    lost++;
+    params.lost++;
   } else {
     output.innerHTML = "YOU WON: " + "You pick " + playerMove + " Computer pick " + computerMove;
-    wins++;
+    params.wins++;
   }
   pointsCounter();
   gameFinish();
 };
 
 function pointsCounter() {
-  playerPoints.innerHTML = wins;
-  computerPoints.innerHTML = lost;
+  playerPoints.innerHTML = params.wins;
+  computerPoints.innerHTML = params.lost;
 };
 
 function gameFinish() {
-  if (wins == rounds) {
+  if (params.wins == params.rounds) {
     output.innerHTML = "YOU WON THE ENTIRE GAME!!!";
     newGameBtn.disabled = false;
     paperButton.disabled = true;
     rockButton.disabled = true;
     scissorsButton.disabled = true;
-  } else if (lost == rounds) {
+  } else if (params.lost == params.rounds) {
     output.innerHTML = "COMPUTER WON THE ENTIRE GAME!!!";
     newGameBtn.disabled = false;
     paperButton.disabled = true;
@@ -77,14 +82,14 @@ function gameFinish() {
   }};
 
 function newGame() {
-  rounds = prompt("How many rounds would You like to play?", 3);
-  if (isNaN(rounds)) {
+  params.rounds = prompt("How many rounds would You like to play?", 3);
+  if (isNaN(params.rounds)) {
     output.innerHTML = "Error. Type number";
     newGameBtn.disabled = false;
     paperButton.disabled = true;
     rockButton.disabled = true;
     scissorsButton.disabled = true;
-  } else if (rounds <= 0) {
+  } else if (params.rounds <= 0) {
     output.innerHTML = "Error. Number must be higher than 0";
     newGameBtn.disabled = false;
     paperButton.disabled = true;
@@ -92,12 +97,13 @@ function newGame() {
     scissorsButton.disabled = true;
   } else {
     output.innerHTML = "Let's play a game";
-    roundsSpace.innerHTML = rounds;
+    roundsSpace.innerHTML = params.rounds;
     newGameBtn.disabled = true;
     paperButton.disabled = false;
     rockButton.disabled = false;
     scissorsButton.disabled = false;
-    wins = lost = 0;
+    params.wins = params.lost = 0;
+    pointsCounter();
   }};
 
 newGameBtn.addEventListener("click", newGame);
