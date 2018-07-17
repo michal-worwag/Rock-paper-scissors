@@ -12,15 +12,14 @@ var rounds;
 var roundsSpace = document.getElementById("roundsSpace");
 var errorRound = document.getElementById("errorRound");
 
-paperButton.addEventListener("click", function() {
-  playerMove("PAPER");
-});
-rockButton.addEventListener("click", function() {
-  playerMove("ROCK");
-});
-scissorsButton.addEventListener("click", function() {
-  playerMove("SCISSORS");
-});
+var playerMoveBtn = document.querySelectorAll('.player-move');
+
+for (var i = 0; i < playerMoveBtn.length; i++){
+  playerMoveBtn[i].addEventListener('click', function(){
+    var playerChoice = event.target.getAttribute('data-move');
+    playerMove(playerChoice);
+  })
+};
 
 function playerMove(playerMove) {
   var computerMove = compMove();
@@ -78,7 +77,7 @@ function gameFinish() {
   }};
 
 function newGame() {
-  rounds = prompt("How many rounds would You like to play?", "How many??");
+  rounds = prompt("How many rounds would You like to play?", 3);
   if (isNaN(rounds)) {
     output.innerHTML = "Error. Type number";
     newGameBtn.disabled = false;

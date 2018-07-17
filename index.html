@@ -4,21 +4,16 @@
 <head>
   <meta charset="UTF-8">
   <title>Paper rock scissors</title>
-  
-  
-  
-      <link rel="stylesheet" href="css/style.css">
-
-  
+        <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
   <button id="newGameBtn">New Game</button>
 <div class="choice">
-  <button id="paperButton">Paper</button>
-  <button id="rockButton">Rock</button>
-  <button id="scissorsButton">Scissors</button>
+  <button id="paperButton" data-move = "PAPER" class = "player-move">Paper</button>
+  <button id="rockButton" data-move = "ROCK" class = "player-move">Rock</button>
+  <button id="scissorsButton" data-move = "SCISSORS" class = "player-move">Scissors</button>
 </div>
 <div id="output"></div>
 <div id="result" class="points">
@@ -34,12 +29,7 @@
 
 </div>
   
-  
-
     <script  src="js/index.js"></script>
-
-
-
 
 </body>
 
