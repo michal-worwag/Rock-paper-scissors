@@ -69,32 +69,27 @@ function pointsCounter() {
 function gameFinish() {
   if (params.wins == params.rounds) {
     output.innerHTML = "YOU WON THE ENTIRE GAME!!!";
-    newGameBtn.disabled = false;
-    paperButton.disabled = true;
-    rockButton.disabled = true;
-    scissorsButton.disabled = true;
+    buttonProp();
   } else if (params.lost == params.rounds) {
     output.innerHTML = "COMPUTER WON THE ENTIRE GAME!!!";
+    buttonProp();
+  }};
+
+  function buttonProp(){
     newGameBtn.disabled = false;
     paperButton.disabled = true;
     rockButton.disabled = true;
     scissorsButton.disabled = true;
-  }};
+  }
 
 function newGame() {
   params.rounds = prompt("How many rounds would You like to play?", 3);
   if (isNaN(params.rounds)) {
     output.innerHTML = "Error. Type number";
-    newGameBtn.disabled = false;
-    paperButton.disabled = true;
-    rockButton.disabled = true;
-    scissorsButton.disabled = true;
+    buttonProp();
   } else if (params.rounds <= 0) {
     output.innerHTML = "Error. Number must be higher than 0";
-    newGameBtn.disabled = false;
-    paperButton.disabled = true;
-    rockButton.disabled = true;
-    scissorsButton.disabled = true;
+    buttonProp();
   } else {
     output.innerHTML = "Let's play a game";
     roundsSpace.innerHTML = params.rounds;
