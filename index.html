@@ -1,52 +1,59 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <title>Paper rock scissors</title>
-        <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
   <button id="newGameBtn">New Game</button>
-<div class="choice">
-  <button id="paperButton" data-move = "PAPER" class = "player-move">Paper</button>
-  <button id="rockButton" data-move = "ROCK" class = "player-move">Rock</button>
-  <button id="scissorsButton" data-move = "SCISSORS" class = "player-move">Scissors</button>
-</div>
-<div id="output"></div>
-<div id="result" class="points">
-  <div class="player">Player
-    <div id="playerPoints">0</div>
+  <div class="choice">
+    <button id="paperButton" data-move="PAPER" class="player-move">Paper</button>
+    <button id="rockButton" data-move="ROCK" class="player-move">Rock</button>
+    <button id="scissorsButton" data-move="SCISSORS" class="player-move">Scissors</button>
   </div>
-  <div class="rounds">Rounds to WIN
-    <div id="roundsSpace">0</div>
-  </div>
-  <div class="computer">Computer
-    <div id="computerPoints">0</div>
-  </div>
-</div>
-
-<div class="overlay">
-  <div class="modal" id="modal-result">
-    <a href="#" class="close">x</a>
-    <div class="content">
-      <div id="modalHeader">
-      </div>
-      <table id="#tableResult">
-        <tr>
-            <th>Round</th>
-            <th>Player Move</th> 
-            <th>Computer Move</th>
-            <th>Result</th>
-        </tr>
-    </table
+  <div id="output"></div>
+  <div id="result" class="points">
+    <div class="player">Player
+      <div id="playerPoints">0</div>
+    </div>
+    <div class="rounds">Rounds to WIN
+      <div id="roundsSpace">0</div>
+    </div>
+    <div class="computer">Computer
+      <div id="computerPoints">0</div>
     </div>
   </div>
-</div>
+
+  <div class="overlay">
+    <div class="modal" id="modal-result">
+      <a href="#" class="close">x</a>
+      <div class="content">
+        <div id="modalHeader">
+        </div>
+        <table id="tableResult">
+            <thead>
+              <tr>
+                <th>Round</th>
+                <th>Player Move</th>
+                <th>Computer Move</th>
+                <th>Round Winner</th>
+                <th>Result</th>
+              </tr>
+            </thead>
+            <tbody id="tbody">
   
-    <script  src="js/script.js"></script>
+            </tbody>
+          </table 
+      </div>
+    </div>
+  </div>
+
+  
+    <script src="js/script.js"></script>
 
 </body>
 
