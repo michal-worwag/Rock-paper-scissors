@@ -69,34 +69,34 @@ function pointsCounter() {
 };
 
 function gameFinish() {
+    var modalHeader = document.getElementById('modalHeader');
   if (params.wins == params.rounds) {
-    output.innerHTML = "YOU WON THE ENTIRE GAME!!!";
-    newGameBtn.disabled = false;
-    paperButton.disabled = true;
-    rockButton.disabled = true;
-    scissorsButton.disabled = true;
+    modalHeader.innerHTML = "YOU WON THE ENTIRE GAME!!!";
+    showModal()
+    //output.innerHTML = "YOU WON THE ENTIRE GAME!!!";
+    buttonProp();
   } else if (params.lost == params.rounds) {
-    output.innerHTML = "COMPUTER WON THE ENTIRE GAME!!!";
+    modalHeader.innerHTML = "COMPUTER WON THE ENTIRE GAME!!!";
+    showModal()
+    //output.innerHTML = "COMPUTER WON THE ENTIRE GAME!!!";
+    buttonProp();
+  }};
+
+  function buttonProp(){
     newGameBtn.disabled = false;
     paperButton.disabled = true;
     rockButton.disabled = true;
     scissorsButton.disabled = true;
-  }};
+  }
 
 function newGame() {
   params.rounds = prompt("How many rounds would You like to play?", 3);
   if (isNaN(params.rounds)) {
     output.innerHTML = "Error. Type number";
-    newGameBtn.disabled = false;
-    paperButton.disabled = true;
-    rockButton.disabled = true;
-    scissorsButton.disabled = true;
+    buttonProp();
   } else if (params.rounds <= 0) {
     output.innerHTML = "Error. Number must be higher than 0";
-    newGameBtn.disabled = false;
-    paperButton.disabled = true;
-    rockButton.disabled = true;
-    scissorsButton.disabled = true;
+    buttonProp();
   } else {
     output.innerHTML = "Let's play a game";
     roundsSpace.innerHTML = params.rounds;
@@ -109,3 +109,33 @@ function newGame() {
   }};
 
 newGameBtn.addEventListener("click", newGame);
+
+// modale
+
+function showModal (){
+  document.querySelector('.overlay').classList.add('show');
+  var modal = document.querySelector('.modal');
+  modal.classList.add('show'); 
+ };
+
+var hideModal = function(event){
+  event.preventDefault();
+  document.querySelector('.overlay').classList.remove('show');
+};
+
+var closeButtons = document.querySelectorAll('.modal .close');
+  for(var i = 0; i < closeButtons.length; i++){
+  closeButtons[i].addEventListener('click', hideModal);
+}
+
+document.querySelector('.overlay').addEventListener('click', hideModal);
+
+var modals = document.querySelectorAll('.modal');
+
+for(var i = 0; i < modals.length; i++){
+  modals[i].addEventListener('click', function(event){
+    event.stopPropagation();
+  });
+}	
+
+// koniec modali
