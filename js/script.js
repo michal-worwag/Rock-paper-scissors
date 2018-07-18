@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-'use strict'
-=======
 'use strict';
->>>>>>> zmiany
 
 var paperButton = document.getElementById("paperButton");
 var rockButton = document.getElementById("rockButton");
@@ -90,13 +86,11 @@ function gameFinish() {
     var modalHeader = document.getElementById('modalHeader');
   if (params.wins == params.rounds) {
     modalHeader.innerHTML = "YOU WON THE ENTIRE GAME!!!";
-    showModal()
-    //output.innerHTML = "YOU WON THE ENTIRE GAME!!!";
+    showModal();
     buttonProp();
   } else if (params.lost == params.rounds) {
     modalHeader.innerHTML = "COMPUTER WON THE ENTIRE GAME!!!";
-    showModal()
-    //output.innerHTML = "COMPUTER WON THE ENTIRE GAME!!!";
+    showModal();
     buttonProp();
   }
 };
@@ -124,6 +118,7 @@ function newGame() {
     rockButton.disabled = false;
     scissorsButton.disabled = false;
     params.wins = params.lost = 0;
+    params.roundsPlayed = 0;
     pointsCounter();
   }
 };
@@ -164,27 +159,17 @@ for(var i = 0; i < modals.length; i++){
 // Tabela
 
 function buildTable(){
-    
-    params.progress.forEach(tableBuild)
+    params.progress.forEach(function(progressResult){
+        var row = document.createElement('tr');
+        tbody.appendChild(row);
+        for (var key in progressResult){
+            buildTableTd(progressResult[key], row);
+        }
+    })
 };
-
-function tableBuild(progressResult){
-    var row = document.createElement('tr');
-    tbody.appendChild(row);
-    for (var key in progressResult){
-        buildTableTd(progressResult[key], row);
-    }
-}
 
 function buildTableTd(value, row){
     var td = document.createElement('td');
     td.innerHTML = value;
     row.appendChild(td);
 };
-
-
-
-<<<<<<< HEAD
-// koniec modali
-=======
->>>>>>> zmiany
