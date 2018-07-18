@@ -116,12 +116,6 @@ function showModal (){
   modal.classList.add('show'); 
  };
 
-var modalLinks = document.querySelectorAll('.show-modal');
-
-for(var i = 0; i < modalLinks.length; i++){
-  modalLinks[i].addEventListener('click', showModal);
-}
-
 var hideModal = function(event){
   event.preventDefault();
   document.querySelector('.overlay').classList.remove('show');
