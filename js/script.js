@@ -67,11 +67,16 @@ function pointsCounter() {
 };
 
 function gameFinish() {
+    var modalHeader = document.getElementById('modalHeader');
   if (params.wins == params.rounds) {
-    output.innerHTML = "YOU WON THE ENTIRE GAME!!!";
+    modalHeader.innerHTML = "YOU WON THE ENTIRE GAME!!!";
+    showModal()
+    //output.innerHTML = "YOU WON THE ENTIRE GAME!!!";
     buttonProp();
   } else if (params.lost == params.rounds) {
-    output.innerHTML = "COMPUTER WON THE ENTIRE GAME!!!";
+    modalHeader.innerHTML = "COMPUTER WON THE ENTIRE GAME!!!";
+    showModal()
+    //output.innerHTML = "COMPUTER WON THE ENTIRE GAME!!!";
     buttonProp();
   }};
 
@@ -105,14 +110,9 @@ newGameBtn.addEventListener("click", newGame);
 
 // modale
 
-var showModal = function (event){
-  event.preventDefault();
-  document.querySelector('#modal-overlay').classList.add('show');
-  var removeShow = document.querySelectorAll('.modal');
-  for (var i = 0; i < removeShow.length; i++){
-    removeShow[i].classList.remove('show');
-  }
-  var modal = document.querySelector(event.target.getAttribute("href"));
+function showModal (){
+  document.querySelector('.overlay').classList.add('show');
+  var modal = document.querySelector('.modal');
   modal.classList.add('show'); 
  };
 
@@ -124,7 +124,7 @@ for(var i = 0; i < modalLinks.length; i++){
 
 var hideModal = function(event){
   event.preventDefault();
-  document.querySelector('#modal-overlay').classList.remove('show');
+  document.querySelector('.overlay').classList.remove('show');
 };
 
 var closeButtons = document.querySelectorAll('.modal .close');
@@ -132,7 +132,7 @@ var closeButtons = document.querySelectorAll('.modal .close');
   closeButtons[i].addEventListener('click', hideModal);
 }
 
-document.querySelector('#modal-overlay').addEventListener('click', hideModal);
+document.querySelector('.overlay').addEventListener('click', hideModal);
 
 var modals = document.querySelectorAll('.modal');
 
