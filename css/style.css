@@ -1,9 +1,31 @@
-body { margin: 0 auto; text-align: center; }
+body {
+  margin: 0 auto;
+  text-align: center;
+}
 
-button { margin: 10px; font-size: 20px; width: 100px; }
+button {
+  margin: 10px;
+  font-size: 20px;
+  width: 100px;
+}
 
-.player, .computer, .rounds { border: 2px solid; display: inline-block; margin-top: 10px; height: 100px; width: 150px; font-size: 20px; }
+.player, .computer, .rounds {
+  border: 2px solid;
+  display: inline-block;
+  margin-top: 10px;
+  height: 100px;
+  width: 150px;
+  font-size: 20px;
+}
 
-.player { float: left; margin-left: 300px; }
+.player {
+  float: left;
+  margin-left: 300px;
+}
 
-.computer { float: right; margin-right: 300px; }
+.computer {
+  float: right;
+  margin-right: 300px;
+}
+
+/*# sourceMappingURL=style.css.map */
