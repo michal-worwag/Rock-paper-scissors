@@ -10,11 +10,12 @@ var computerPoints = document.getElementById("computerPoints");
 var newGameBtn = document.getElementById("newGameBtn");
 var roundsSpace = document.getElementById("roundsSpace");
 var errorRound = document.getElementById("errorRound");
-var tbody = document.querySelector('#tbody');
+//var tbody = document.querySelector('#tbody');
 var playerMoveBtn = document.querySelectorAll('.player-move');
 
 var params = {
   winner: 0,
+  rounds: 0,
   wins: 0,
   lost: 0,
   roundsPlayed: 0,
@@ -31,7 +32,7 @@ for (var i = 0; i < playerMoveBtn.length; i++){
 function playerMove(playerMove) {
   var computerMove = compMove();
   whoWin(playerMove, computerMove);
-  
+
   params.progress.push({
     gameRounds: params.roundsPlayed,
     gamePlayerMove: playerMove,
@@ -39,6 +40,8 @@ function playerMove(playerMove) {
     roundWinner: params.winner,
     finalResult: params.wins + ' - ' + params.lost
 })
+
+//console.log(params.progress);
 };
 
 function compMove() {
@@ -74,7 +77,6 @@ function whoWin(playerMove, computerMove) {
   }
   pointsCounter();
   gameFinish();
-
 };
 
 function pointsCounter() {
@@ -86,12 +88,12 @@ function gameFinish() {
     var modalHeader = document.getElementById('modalHeader');
   if (params.wins == params.rounds) {
     modalHeader.innerHTML = "YOU WON THE ENTIRE GAME!!!";
-    showModal();
     buttonProp();
+    showModal();
   } else if (params.lost == params.rounds) {
     modalHeader.innerHTML = "COMPUTER WON THE ENTIRE GAME!!!";
-    showModal();
     buttonProp();
+    showModal();
   }
 };
 
@@ -120,6 +122,7 @@ function newGame() {
     params.wins = params.lost = 0;
     params.roundsPlayed = 0;
     pointsCounter();
+    tableDiv.innerHTML = "";
   }
 };
 
@@ -157,8 +160,16 @@ for(var i = 0; i < modals.length; i++){
 // koniec modali
 
 // Tabela
-
+var tableDiv = document.getElementById('tableResult');
 function buildTable(){
+    var table = document.createElement('table');
+    tableDiv.appendChild(table);
+    var thead = document.createElement('thead');
+    table.appendChild(thead);
+    var trTable = "<tr><th>Round</th><th>Player Move</th><th>Computer Move</th><th>Round Winner</th><th>Result</th></tr>";
+    thead.innerHTML = trTable;
+    var tbody = document.createElement('tbody');
+    table.appendChild(tbody);  
     params.progress.forEach(function(progressResult){
         var row = document.createElement('tr');
         tbody.appendChild(row);

@@ -1,81 +1,23 @@
-body {
-  margin: 0 auto;
-  text-align: center;
-}
+body { margin: 0 auto; text-align: center; }
 
-button {
-  margin: 10px;
-  font-size: 20px;
-  width: 100px;
-}
+button { margin: 10px; font-size: 20px; width: 100px; }
 
-.player, .computer, .rounds {
-  border: 2px solid;
-  display: inline-block;
-  margin-top: 10px;
-  height: 100px;
-  width: 150px;
-  font-size: 20px;
-}
+.player, .computer, .rounds { border: 2px solid; display: inline-block; margin-top: 10px; height: 100px; width: 150px; font-size: 20px; }
 
-.player {
-  float: left;
-  margin-left: 300px;
-}
+.player { float: left; margin-left: 300px; }
 
-.computer {
-  float: right;
-  margin-right: 300px;
-}
+.computer { float: right; margin-right: 300px; }
 
-.overlay {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.7);
-}
+.overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); }
 
-.overlay.show {
-  display: block;
-}
+.overlay.show { display: block; }
 
-.modal {
-  display: none;
-  background: #fff;
-  width: auto;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate3d(-50%, -50%, 0);
-}
+.modal { display: none; background: #fff; width: auto; position: absolute; top: 50%; left: 50%; transform: translate3d(-50%, -50%, 0); }
 
-.modal.show {
-  display: block;
-}
+.modal.show { display: block; }
 
-.close {
-  position: absolute;
-  right: 0;
-  top: 0;
-  padding: 5px;
-  color: #000;
-  text-decoration: none;
-}
+.close { position: absolute; right: 0; top: 0; padding: 5px; color: #000; text-decoration: none; }
 
-header {
-  font-size: 20px;
-  line-height: 30px;
-  min-height: 30px;
-  font-weight: bold;
-  padding: 0 30px;
-}
+header { font-size: 20px; line-height: 30px; min-height: 30px; font-weight: bold; padding: 0 30px; }
 
-.content {
-  min-height: 30px;
-  padding: 5px 30px;
-}
-
-/*# sourceMappingURL=style.css.map */
+.content { min-height: 30px; padding: 5px 30px; }
