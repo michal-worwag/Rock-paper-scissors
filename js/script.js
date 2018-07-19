@@ -12,6 +12,7 @@ var roundsSpace = document.getElementById("roundsSpace");
 var errorRound = document.getElementById("errorRound");
 var playerMoveBtn = document.querySelectorAll('.player-move');
 var tableDiv = document.getElementById('tableResult');
+var modals = document.querySelectorAll('.modal');
 var params = {
   winner: 0,
   rounds: 0,
@@ -19,7 +20,7 @@ var params = {
   lost: 0,
   roundsPlayed: 0,
   progress: []
-};
+}
 
 newGameBtn.addEventListener("click", newGame);
 
@@ -28,20 +29,12 @@ for (var i = 0; i < playerMoveBtn.length; i++){
     var playerChoice = event.target.getAttribute('data-move');
     playerMove(playerChoice);
   })
-};
+}
 
 function playerMove(playerMove) {
   var computerMove = compMove();
-  whoWin(playerMove, computerMove);
-
-  params.progress.push({
-    gameRounds: params.roundsPlayed,
-    gamePlayerMove: playerMove,
-    gameComputerMove: computerMove,
-    roundWinner: params.winner,
-    finalResult: params.wins + ' - ' + params.lost
-})
-};
+  whoWin(playerMove, computerMove); 
+}
 
 function compMove() {
   var compChoice = Math.floor(Math.random() * 3 + 1);
@@ -52,7 +45,7 @@ function compMove() {
   } else if (compChoice == 3) {
      return "SCISSORS"
   }
-};
+}
 
 function whoWin(playerMove, computerMove) {
   if (playerMove === computerMove) {
@@ -74,14 +67,21 @@ function whoWin(playerMove, computerMove) {
     params.roundsPlayed++;
     params.winner = "PLAYER";
   }
+  params.progress.push({
+    gameRounds: params.roundsPlayed,
+    gamePlayerMove: playerMove,
+    gameComputerMove: computerMove,
+    roundWinner: params.winner,
+    finalResult: params.wins + ' - ' + params.lost
+})
   pointsCounter();
   gameFinish();
-};
+}
 
 function pointsCounter() {
   playerPoints.innerHTML = params.wins;
   computerPoints.innerHTML = params.lost;
-};
+}
 
 function gameFinish() {
     var modalHeader = document.getElementById('modalHeader');
@@ -94,14 +94,14 @@ function gameFinish() {
     buttonProp();
     showModal();
   }
-};
+}
 //Function with buttons properities
-  function buttonProp(){
-    newGameBtn.disabled = false;
-    paperButton.disabled = true;
-    rockButton.disabled = true;
-    scissorsButton.disabled = true;
-  };
+function buttonProp() {
+  newGameBtn.disabled = false;
+  paperButton.disabled = true;
+  rockButton.disabled = true;
+  scissorsButton.disabled = true;
+};
 
 function newGame() {
   params.rounds = prompt("How many rounds would You like to play?", 3);
@@ -121,9 +121,9 @@ function newGame() {
     pointsCounter();
     clear();
   }
-};
+}
 // Function to clear table
-function clear(){
+function clear() {
   params.wins = params.lost = 0;
   params.roundsPlayed = 0;
   params.winner = 0;
@@ -133,37 +133,35 @@ function clear(){
 
 // Modals
 
-function showModal (){
+function showModal() {
   document.querySelector('.overlay').classList.add('show');
   var modal = document.querySelector('.modal');
   modal.classList.add('show'); 
   buildTable();
- };
+ }
 
-var hideModal = function(event){
+function hideModal(event) {
   event.preventDefault();
   document.querySelector('.overlay').classList.remove('show');
-};
+}
 
 var closeButtons = document.querySelectorAll('.modal .close');
   for(var i = 0; i < closeButtons.length; i++){
   closeButtons[i].addEventListener('click', hideModal);
-};
+}
 
 document.querySelector('.overlay').addEventListener('click', hideModal);
-
-var modals = document.querySelectorAll('.modal');
 
 for(var i = 0; i < modals.length; i++){
   modals[i].addEventListener('click', function(event){
     event.stopPropagation();
   });
-};
+}
 
 // End of modals
 // Creating table
 
-function buildTable(){
+function buildTable() {
     var table = document.createElement('table');
     tableDiv.appendChild(table);
     var thead = document.createElement('thead');
@@ -179,10 +177,10 @@ function buildTable(){
             buildTableTd(progressResult[key], row);
         }
     })
-};
+}
 
-function buildTableTd(value, row){
+function buildTableTd(value, row) {
     var td = document.createElement('td');
     td.innerHTML = value;
     row.appendChild(td);
-};
+}
