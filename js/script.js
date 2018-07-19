@@ -119,12 +119,18 @@ function newGame() {
     paperButton.disabled = false;
     rockButton.disabled = false;
     scissorsButton.disabled = false;
-    params.wins = params.lost = 0;
-    params.roundsPlayed = 0;
     pointsCounter();
-    tableDiv.innerHTML = "";
+    clear();
   }
 };
+
+function clear(){
+  params.wins = params.lost = 0;
+  params.roundsPlayed = 0;
+  params.winner = 0;
+  params.progress = [];
+  tableDiv.innerHTML = "";
+}
 
 newGameBtn.addEventListener("click", newGame);
 
