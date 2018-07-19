@@ -10,9 +10,8 @@ var computerPoints = document.getElementById("computerPoints");
 var newGameBtn = document.getElementById("newGameBtn");
 var roundsSpace = document.getElementById("roundsSpace");
 var errorRound = document.getElementById("errorRound");
-//var tbody = document.querySelector('#tbody');
 var playerMoveBtn = document.querySelectorAll('.player-move');
-
+var tableDiv = document.getElementById('tableResult');
 var params = {
   winner: 0,
   rounds: 0,
@@ -21,6 +20,8 @@ var params = {
   roundsPlayed: 0,
   progress: []
 };
+
+newGameBtn.addEventListener("click", newGame);
 
 for (var i = 0; i < playerMoveBtn.length; i++){
   playerMoveBtn[i].addEventListener('click', function(){
@@ -40,8 +41,6 @@ function playerMove(playerMove) {
     roundWinner: params.winner,
     finalResult: params.wins + ' - ' + params.lost
 })
-
-//console.log(params.progress);
 };
 
 function compMove() {
@@ -96,7 +95,7 @@ function gameFinish() {
     showModal();
   }
 };
-
+//Function with buttons properities
   function buttonProp(){
     newGameBtn.disabled = false;
     paperButton.disabled = true;
@@ -123,7 +122,7 @@ function newGame() {
     clear();
   }
 };
-
+// Function to clear table
 function clear(){
   params.wins = params.lost = 0;
   params.roundsPlayed = 0;
@@ -132,9 +131,7 @@ function clear(){
   tableDiv.innerHTML = "";
 }
 
-newGameBtn.addEventListener("click", newGame);
-
-// modale
+// Modals
 
 function showModal (){
   document.querySelector('.overlay').classList.add('show');
@@ -163,10 +160,9 @@ for(var i = 0; i < modals.length; i++){
   });
 };
 
-// koniec modali
+// End of modals
+// Creating table
 
-// Tabela
-var tableDiv = document.getElementById('tableResult');
 function buildTable(){
     var table = document.createElement('table');
     tableDiv.appendChild(table);
