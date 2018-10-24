@@ -13,6 +13,8 @@ var errorRound = document.getElementById("errorRound");
 var playerMoveBtn = document.querySelectorAll('.player-move');
 var tableDiv = document.getElementById('tableResult');
 var modals = document.querySelectorAll('.modal');
+var playerResult = document.getElementById("playerResult");
+var computerResult = document.getElementById("computerResult");
 var params = {
   winner: 0,
   rounds: 0,
@@ -33,7 +35,7 @@ for (var i = 0; i < playerMoveBtn.length; i++){
 
 function playerMove(playerMove) {
   var computerMove = compMove();
-  whoWin(playerMove, computerMove); 
+  whoWin(playerMove, computerMove);
 }
 
 function compMove() {
@@ -50,6 +52,8 @@ function compMove() {
 function whoWin(playerMove, computerMove) {
   if (playerMove === computerMove) {
     output.innerHTML = "It's a TIE " + "You pick " +  playerMove + " Computer pick " + computerMove;
+    playerResult.innerHTML = "TIE";
+    computerResult.innerHTML = "TIE";
     params.roundsPlayed++;
     params.winner = "TIE";
   } else if (
@@ -58,11 +62,15 @@ function whoWin(playerMove, computerMove) {
     (playerMove === "PAPER" && computerMove === "SCISSORS")
   ) {
     output.innerHTML = "Computer WON " + "You pick " + playerMove + " Computer pick " + computerMove;
+    playerResult.innerHTML = "LOST";
+    computerResult.innerHTML = "WON";
     params.lost++;
     params.roundsPlayed++;
     params.winner = "COMP";
   } else {
     output.innerHTML = "YOU WON: " + "You pick " + playerMove + " Computer pick " + computerMove;
+    playerResult.innerHTML = "WON";
+    computerResult.innerHTML = "LOST";
     params.wins++;
     params.roundsPlayed++;
     params.winner = "PLAYER";
@@ -136,7 +144,7 @@ function clear() {
 function showModal() {
   document.querySelector('.overlay').classList.add('show');
   var modal = document.querySelector('.modal');
-  modal.classList.add('show'); 
+  modal.classList.add('show');
   buildTable();
  }
 
@@ -169,7 +177,7 @@ function buildTable() {
     var trTable = "<tr><th>Round</th><th>Player Move</th><th>Computer Move</th><th>Round Winner</th><th>Result</th></tr>";
     thead.innerHTML = trTable;
     var tbody = document.createElement('tbody');
-    table.appendChild(tbody);  
+    table.appendChild(tbody);
     params.progress.forEach(function(progressResult){
         var row = document.createElement('tr');
         tbody.appendChild(row);

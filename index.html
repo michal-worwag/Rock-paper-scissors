@@ -5,26 +5,34 @@
   <meta charset="UTF-8">
   <title>Paper rock scissors</title>
   <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Bungee|Bungee+Shade" rel="stylesheet">
 </head>
 
 <body>
+  <div class="header"><h1>Rock</h1><h1>Paper</h1><h1>Scissors</h1></div>
 
   <button id="newGameBtn">New Game</button>
+
   <div class="choice">
-    <button id="paperButton" data-move="PAPER" class="player-move">Paper</button>
     <button id="rockButton" data-move="ROCK" class="player-move">Rock</button>
+    <button id="paperButton" data-move="PAPER" class="player-move">Paper</button>
     <button id="scissorsButton" data-move="SCISSORS" class="player-move">Scissors</button>
   </div>
-  <div id="output"></div>
+
+  <div id="output" class="output-text"></div>
+  <div class="rounds">Rounds to WIN
+    <div id="roundsSpace">0</div>
+  </div>
+
   <div id="result" class="points">
     <div class="player">Player
       <div id="playerPoints">0</div>
+      <div id="playerResult"></div>
     </div>
-    <div class="rounds">Rounds to WIN
-      <div id="roundsSpace">0</div>
-    </div>
+
     <div class="computer">Computer
       <div id="computerPoints">0</div>
+      <div id="computerResult"></div>
     </div>
   </div>
 
@@ -35,13 +43,13 @@
         <div id="modalHeader">
         </div>
         <div id="tableResult">
-        
+
         </div>
       </div>
     </div>
   </div>
 
-  
+
     <script src="js/script.js"></script>
 
 </body>
