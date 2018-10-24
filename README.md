@@ -8,4 +8,4 @@ This is my version fo popular game rock-paper-scissors.
 - SCSS
 - Vanilla JS
 
-![Rock-paper-scissors sample image](https://github.com/michal-worwag/Kanban-app/blob/master/Kanban-board.png?raw=true)
+![Rock-paper-scissors sample image](https://github.com/michal-worwag/Rock-paper-scissors/blob/master/images/rock-paper-scissors.png?raw=true)
